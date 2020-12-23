@@ -17,6 +17,7 @@ project "Hazel"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}" )
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}" )
 
+	targetHazel = "%{cfg.buildtarget.relpath}"
 	files
 	{ 
 		"%{prj.name}/src/**.h",
@@ -39,11 +40,6 @@ project "Hazel"
 			"HZ_BUILD_DLL"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
-
 		filter "configurations:Debug"
 			defines "HZ_DEBUG"
 			symbols "On"
@@ -60,7 +56,6 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}" )
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}" )
 
@@ -73,7 +68,7 @@ project "Sandbox"
 	includedirs
 	{
 		"Hazel/vendor/spdlog/include",
-		"Hazle/src"
+		"Hazel/src"
 	}
 	links
 	{
@@ -88,6 +83,14 @@ project "Sandbox"
 		{
 			"HZ_PLATFORM_WINDOWS"
 		}
+
+		prebuildmessage (" Sandbox Copying ../bin/" .. outputdir .. "/Hazel/Hazel.dll ../bin/" .. outputdir .. "/Sandbox ")
+		prebuildcommands
+		{
+			("{COPY} ../bin/" .. outputdir .. "/Hazel/Hazel.dll ../bin/" .. outputdir .. "/Sandbox")
+		}
+		
+
 
 		filter "configurations:Debug"
 			defines "HZ_DEBUG"
