@@ -9,7 +9,7 @@ namespace Hazel {
 	public:
 		Application();
 		virtual ~Application();
-
+		
 		void run() 
 		{
 			while (true);
