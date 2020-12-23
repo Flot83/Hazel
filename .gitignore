@@ -3,3 +3,7 @@ bin/
 bin-int/
 
 *.user
+/Hazel.sln
+/Hazel/Hazel.vcxproj
+/Hazel/Hazel.vcxproj.filters
+/Sandbox/Sandbox.vcxproj
