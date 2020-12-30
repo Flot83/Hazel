@@ -17,12 +17,16 @@ project "Hazel"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}" )
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}" )
 
+	pchheader "pch.h"
+	pchsource "Hazel/src/pch.cpp"
+
 	targetHazel = "%{cfg.buildtarget.relpath}"
 	files
 	{ 
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
 	}
+
 
 	includedirs
 	{
