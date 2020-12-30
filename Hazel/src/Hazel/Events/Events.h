@@ -20,8 +20,10 @@ namespace Hazel
 		EventCategoryInput       = BIT(1),
 		EventCategoryKeyboard    = BIT(2),
 		EventCategoryMouse       = BIT(3),
+		EventCategoryMouseButton = BIT(4)
 
 	};
+
 	class Event
 	{
 	public:
