@@ -39,6 +39,14 @@ namespace Hazel
 
 	class KeyPress : public Event
 	{
-
+	public:
+		EventType GetEventType() const override 
+		{
+			return EventType::KeyPressed;
+		};
+		const char* GetName() const override 
+		{
+			return "KeyPress";
+		};
 	};
 }
